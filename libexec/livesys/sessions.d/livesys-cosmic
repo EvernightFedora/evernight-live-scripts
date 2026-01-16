@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# live-cosmic: cosmic specific setup for livesys
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+
+# set up autologin for user liveuser
+
+cat >> /etc/greetd/cosmic-greeter.toml << COSMIC_GREETER_EOF
+[initial_session]
+user = "liveuser"
+command = "cosmic-session"
+COSMIC_GREETER_EOF
+
+# add liveinst.desktop to favorites
+mkdir -p /home/liveuser/.config/cosmic/com.system76.CosmicAppList/v1
+cat > /home/liveuser/.config/cosmic/com.system76.CosmicAppList/v1/favorites << FAVS_EOF
+[
+    "liveinst",
+    "org.mozilla.firefox",
+    "com.system76.CosmicFiles",
+    "com.system76.CosmicEdit",
+    "com.system76.CosmicTerm",
+    "com.system76.CosmicStore",
+    "com.system76.CosmicSettings",
+]
+FAVS_EOF
+
+# show liveinst.desktop on desktop and in menu
+mkdir -p /home/liveuser/.local/share/applications
+cp /usr/share/applications/liveinst.desktop /home/liveuser/.local/share/applications
+sed -i 's/NoDisplay=true/NoDisplay=false/' /home/liveuser/.local/share/applications/liveinst.desktop
+mkdir /home/liveuser/Desktop
+cp -a /home/liveuser/.local/share/applications/liveinst.desktop /home/liveuser/Desktop/

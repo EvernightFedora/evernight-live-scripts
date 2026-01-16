@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# live-miraclewm: miracle-wm specific setup for livesys
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+MIRACLEWM_SESSION_FILE="miracle-wm.desktop"
+
+# set up autologin for user liveuser
+if [ -f /etc/sddm.conf ]; then
+sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
+sed -i "s/^#Session=.*/Session=${MIRACLEWM_SESSION_FILE}/" /etc/sddm.conf
+else
+cat > /etc/sddm.conf << SDDM_EOF
+[Autologin]
+User=liveuser
+Session=${MIRACLEWM_SESSION_FILE}
+SDDM_EOF
+fi
+
+# Show harddisk install on the desktop
+sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
+
+# Add the installer icon to the dock
+mkdir -p /home/liveuser/.cache
+echo 'liveinst' >> /home/liveuser/.cache/nwg-dock-pinned
+# Pin the installer icon to the launcher
+echo "liveinst.desktop" >> /home/liveuser/.cache/nwg-pin-cache
+
+# echoing type liveinst to start the installer
+echo "echo 'Please type liveinst and press Enter to start the installer'" >> /home/liveuser/.bashrc
+
+# Ensure the files and folders are owned by liveuser
+chown --recursive liveuser:liveuser /home/liveuser/

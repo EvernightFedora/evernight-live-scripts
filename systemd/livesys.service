@@ -1,0 +1,11 @@
+[Unit]
+Description=Initialization for live environments
+Before=display-manager.service chronyd.service
+ConditionKernelCommandLine=rd.live.image
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/livesys/livesys-main
+
+[Install]
+WantedBy=multi-user.target
