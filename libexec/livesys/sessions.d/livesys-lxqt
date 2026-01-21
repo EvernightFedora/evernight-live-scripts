@@ -12,25 +12,25 @@ else
   DEFAULT_DESKTOP="lxqt.desktop"
 fi
 
-# set up autologin for user liveuser
+# set up autologin for user evernight
 if [ -f /etc/sddm.conf ]; then
-sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
+sed -i 's/^#User=.*/User=evernight/' /etc/sddm.conf
 sed -i "s/^#Session=.*/Session=${DEFAULT_DESKTOP}/" /etc/sddm.conf
 else
 cat > /etc/sddm.conf << SDDM_EOF
 [Autologin]
-User=liveuser
+User=evernight
 Session=${DEFAULT_DESKTOP}
 SDDM_EOF
 fi
 
 # show liveinst.desktop on desktop and in menu
 sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp -a /usr/share/applications/liveinst.desktop /home/liveuser/Desktop/
+mkdir /home/evernight/Desktop
+cp -a /usr/share/applications/liveinst.desktop /home/evernight/Desktop/
 # Enable metadata::trust so the .desktop file for anaconda is launchable, see: https://pagure.io/fedora-lxqt/SIG/issue/5
-chmod +x /home/liveuser/Desktop/liveinst.desktop
-gio set /home/liveuser/Desktop/liveinst.desktop metadata::trust true
+chmod +x /home/evernight/Desktop/liveinst.desktop
+gio set /home/evernight/Desktop/liveinst.desktop metadata::trust true
 
 # set up preferred apps
 cat > /etc/xdg/libfm/pref-apps.conf << FOE

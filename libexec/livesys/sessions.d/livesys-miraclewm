@@ -6,14 +6,14 @@
 
 MIRACLEWM_SESSION_FILE="miracle-wm.desktop"
 
-# set up autologin for user liveuser
+# set up autologin for user evernight
 if [ -f /etc/sddm.conf ]; then
-sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
+sed -i 's/^#User=.*/User=evernight/' /etc/sddm.conf
 sed -i "s/^#Session=.*/Session=${MIRACLEWM_SESSION_FILE}/" /etc/sddm.conf
 else
 cat > /etc/sddm.conf << SDDM_EOF
 [Autologin]
-User=liveuser
+User=evernight
 Session=${MIRACLEWM_SESSION_FILE}
 SDDM_EOF
 fi
@@ -22,13 +22,13 @@ fi
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
 
 # Add the installer icon to the dock
-mkdir -p /home/liveuser/.cache
-echo 'liveinst' >> /home/liveuser/.cache/nwg-dock-pinned
+mkdir -p /home/evernight/.cache
+echo 'liveinst' >> /home/evernight/.cache/nwg-dock-pinned
 # Pin the installer icon to the launcher
-echo "liveinst.desktop" >> /home/liveuser/.cache/nwg-pin-cache
+echo "liveinst.desktop" >> /home/evernight/.cache/nwg-pin-cache
 
 # echoing type liveinst to start the installer
-echo "echo 'Please type liveinst and press Enter to start the installer'" >> /home/liveuser/.bashrc
+echo "echo 'Please type liveinst and press Enter to start the installer'" >> /home/evernight/.bashrc
 
-# Ensure the files and folders are owned by liveuser
-chown --recursive liveuser:liveuser /home/liveuser/
+# Ensure the files and folders are owned by evernight
+chown --recursive evernight:evernight /home/evernight/

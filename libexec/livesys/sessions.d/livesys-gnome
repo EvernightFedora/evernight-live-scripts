@@ -23,8 +23,8 @@ FOE
 
 if [ ! -d /var/lib/gnome-initial-setup ]; then
   # don't run gnome-initial-setup
-  mkdir ~liveuser/.config
-  : > ~liveuser/.config/gnome-initial-setup-done
+  mkdir ~evernight/.config
+  : > ~evernight/.config/gnome-initial-setup-done
 fi
 
 # suppress anaconda spokes redundant with gnome-initial-setup
@@ -58,9 +58,9 @@ FOE
     # EOL
     for deskname in org.fedoraproject.welcome-screen.desktop fedora-welcome.desktop; do
       if [ -f /usr/share/anaconda/gnome/${deskname} ]; then
-        mkdir -p ~liveuser/.config/autostart
+        mkdir -p ~evernight/.config/autostart
         cp /usr/share/anaconda/gnome/${deskname} /usr/share/applications/
-        cp /usr/share/anaconda/gnome/${deskname} ~liveuser/.config/autostart/
+        cp /usr/share/anaconda/gnome/${deskname} ~evernight/.config/autostart/
       fi
     done
 
@@ -84,7 +84,7 @@ if [ "${cmdline##* rd.live.overlay[= ]}" != "$cmdline"  -o ! -d /var/lib/gnome-i
   cat > /etc/gdm/custom.conf <<- "  FOE"
 	[daemon]
 	AutomaticLoginEnable=True
-	AutomaticLogin=liveuser
+	AutomaticLogin=evernight
   FOE
 fi
 
@@ -98,7 +98,7 @@ cat > /usr/share/polkit-1/rules.d/20-livesys-gnome.rules << FOE
 polkit.addRule(function(action, subject) {
     if (!subject.local)
         return undefined;
-    if (subject.user !== 'liveuser')
+    if (subject.user !== 'evernight')
         return undefined;
     if (action.id.indexOf('org.fedoraproject.pkexec.liveinst') !== 0)
         return undefined;

@@ -9,7 +9,7 @@
 rm -f /etc/xdg/autostart/xfconf-migration-4.6.desktop || :
 
 # set up lightdm autologin
-sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user=.*/autologin-user=evernight/' /etc/lightdm/lightdm.conf
 sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
 #sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
 
@@ -27,13 +27,13 @@ EOF
 
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
+mkdir /home/evernight/Desktop
 
 # setting the wallpaper
-echo "/usr/bin/feh --bg-scale /usr/share/backgrounds/default.jxl" >> /home/liveuser/.profile
+echo "/usr/bin/feh --bg-scale /usr/share/backgrounds/default.jxl" >> /home/evernight/.profile
 
 # echoing type liveinst to start the installer
-echo "echo 'Please type liveinst and press Enter to start the installer'" >> /home/liveuser/.bashrc
+echo "echo 'Please type liveinst and press Enter to start the installer'" >> /home/evernight/.bashrc
 
 # fixing the installer non opening bug
-echo "xhost si:localuser:root" >> /home/liveuser/.profile
+echo "xhost si:localuser:root" >> /home/evernight/.profile

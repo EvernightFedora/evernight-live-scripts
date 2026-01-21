@@ -6,7 +6,7 @@
 
 
 # set up lightdm autologin
-sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user=.*/autologin-user=evernight/' /etc/lightdm/lightdm.conf
 sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
 #sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
 
@@ -18,8 +18,8 @@ rm -f /etc/xdg/autostart/org.mageia.dnfdragora-updater.desktop
 
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
+mkdir /home/evernight/Desktop
+cp /usr/share/applications/liveinst.desktop /home/evernight/Desktop
 
 # and mark it as executable
-chmod +x /home/liveuser/Desktop/liveinst.desktop
+chmod +x /home/evernight/Desktop/liveinst.desktop

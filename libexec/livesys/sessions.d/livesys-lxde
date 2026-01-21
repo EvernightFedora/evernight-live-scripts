@@ -20,17 +20,17 @@ WebBrowser=org.mozilla.firefox.desktop
 MailClient=sylpheed.desktop
 FOE
 
-# set up auto-login for liveuser
-sed -i 's/# autologin=.*/autologin=liveuser/g' /etc/lxdm/lxdm.conf
+# set up auto-login for evernight
+sed -i 's/# autologin=.*/autologin=evernight/g' /etc/lxdm/lxdm.conf
 
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
+mkdir /home/evernight/Desktop
+cp /usr/share/applications/liveinst.desktop /home/evernight/Desktop
 
 # create default config for clipit, otherwise it displays a dialog on startup
-mkdir -p /home/liveuser/.config/clipit
-cat > /home/liveuser/.config/clipit/clipitrc  << FOE
+mkdir -p /home/evernight/.config/clipit
+cat > /home/evernight/.config/clipit/clipitrc  << FOE
 [rc]
 use_copy=true
 save_uris=true
