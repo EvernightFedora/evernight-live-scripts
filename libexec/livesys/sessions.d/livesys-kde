@@ -125,3 +125,16 @@ AutomountEnabled=false
 AutomountOnLogin=false
 AutomountOnPlugin=false
 AUTOMOUNTER_EOF
+
+# Don't require authentication for starting the installer
+cat > /usr/share/polkit-1/rules.d/37-livesys-kde.rules << FOE
+polkit.addRule(function(action, subject) {
+    if (!subject.local)
+        return undefined;
+    if (subject.user !== 'evernight')
+        return undefined;
+    if (action.id.indexOf('org.fedoraproject.pkexec.liveinst') !== 0)
+        return undefined;
+    return 'yes';
+});
+FOE
