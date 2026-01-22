@@ -147,3 +147,7 @@ cat > /var/lib/AccountsService/users/evernight << AVATAREOF
 Icon=/var/lib/AccountsService/icons/evernight
 SystemAccount=false
 AVATAREOF
+
+# Fix avatar permissions.
+chmod 600 /var/lib/AccountsService/users/evernight
+chown root:root /var/lib/AccountsService/users/evernight
