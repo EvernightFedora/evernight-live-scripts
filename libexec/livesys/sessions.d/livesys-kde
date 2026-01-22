@@ -138,3 +138,12 @@ polkit.addRule(function(action, subject) {
     return 'yes';
 });
 FOE
+
+# Apply Evernight Default Avatar
+cp /usr/share/plasma/avatars/photos/Evernight.png /var/lib/AccountsService/icons/evernight
+
+cat > /var/lib/AccountsService/users/evernight << AVATAREOF
+[User]
+Icon=/var/lib/AccountsService/icons/evernight
+SystemAccount=false
+AVATAREOF
