@@ -140,7 +140,7 @@ polkit.addRule(function(action, subject) {
 FOE
 
 # Apply Evernight Default Avatar
-cp /usr/share/plasma/avatars/photos/Evernight.png /var/lib/AccountsService/icons/evernight
+cp /usr/share/pixmaps/system-logo-white.png /var/lib/AccountsService/icons/evernight
 
 cat > /var/lib/AccountsService/users/evernight << AVATAREOF
 [User]
