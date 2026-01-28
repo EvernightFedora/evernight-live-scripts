@@ -13,9 +13,9 @@ else
   DEFAULT_DESKTOP="plasma.desktop"
   IS_MOBILE=0
 fi
-if [ -f "${LOGIN_MANAGER_CONFIG}" ]; then
-sed -i 's/^#User=.*/User=evernight/' ${LOGIN_MANAGER_CONFIG}
-sed -i "s/^#Session=.*/Session=${DEFAULT_DESKTOP}/" ${LOGIN_MANAGER_CONFIG}
+if [ -f "/etc/plasmalogin.conf" ]; then
+sed -i 's/^#User=.*/User=evernight/' /etc/plasmalogin.conf
+sed -i "s/^#Session=.*/Session=${DEFAULT_DESKTOP}/" /etc/plasmalogin.conf
 else
 cat > /etc/plasmalogin.conf << LGNMGR_EOF
 [Autologin]
