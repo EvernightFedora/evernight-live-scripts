@@ -13,16 +13,11 @@ else
   DEFAULT_DESKTOP="plasma.desktop"
   IS_MOBILE=0
 fi
-if $(rpm -q evernight-vista-logon > /dev/null 2>&1) ; then
-  LOGIN_MANAGER_CONFIG="/etc/plasmalogin.conf"
-else
-  LOGIN_MANAGER_CONFIG="/etc/sddm.conf"
-fi
 if [ -f "${LOGIN_MANAGER_CONFIG}" ]; then
 sed -i 's/^#User=.*/User=evernight/' ${LOGIN_MANAGER_CONFIG}
 sed -i "s/^#Session=.*/Session=${DEFAULT_DESKTOP}/" ${LOGIN_MANAGER_CONFIG}
 else
-cat > ${LOGIN_MANAGER_CONFIG} << LGNMGR_EOF
+cat > /etc/plasmalogin.conf << LGNMGR_EOF
 [Autologin]
 User=evernight
 Session=${DEFAULT_DESKTOP}
