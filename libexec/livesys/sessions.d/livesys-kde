@@ -146,3 +146,6 @@ AVATAREOF
 # Fix avatar permissions.
 chmod 600 /var/lib/AccountsService/users/evernight
 chown root:root /var/lib/AccountsService/users/evernight
+
+# Remove Recycle Bin on Desktop
+rm /home/evernight/Desktop/trash:⁄.desktop
