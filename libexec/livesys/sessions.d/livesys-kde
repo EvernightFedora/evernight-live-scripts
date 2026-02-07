@@ -149,3 +149,4 @@ chown root:root /var/lib/AccountsService/users/evernight
 
 # Remove Recycle Bin on Desktop
 rm /home/evernight/Desktop/trash:⁄.desktop
+rm /home/evernight/Desktop/user-home.desktop
